@@ -1,0 +1,6 @@
+restart
+set gap 10
+set onlyborder 0
+set onlyborder 1
+set padding 10 10 10 10
+restart

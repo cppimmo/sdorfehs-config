@@ -1,0 +1,106 @@
+# config
+escape C-t
+
+set barpadding 10 5
+set barsticky 1
+set gap 5
+set ignoreresizehints 1
+set onlyborder 1 
+set padding 10 10 10 10
+set border 3
+
+# focused window
+set fwcolor #FFFFFF
+# unfocused window
+set bwcolor #000000
+set bgcolor #000000
+set fgcolor #FFFFFF
+
+set font "Ubuntu Mono:style=Regular:pixelsize=18:antialias=1:hinting=1:hintstyle=3"
+
+bind s split
+bind C-s split
+bind S hssplit
+bind C-s hsplit
+
+# bind c exec urxvt -name sid -fg white -bg black
+bind c exec st -e tmux 
+bind C exec xterm
+
+# unbind n
+# bind n exec ratpoison -c "echo `mpc prev | head -1`"
+# bind p exec ratpoison -c "echo `mpc next | head -1`"
+# bind o exec mpc toggle
+
+bind D exec dmenu_run
+bind F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bind F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bind F1 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+#bind XF86AudIomicmute exec
+bind F6 exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -d 0.1
+bind F7 exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -i 0.1
+
+# lock the screen
+#bind L exec pkill -USR1 xidle
+
+# prevent accidental closes
+unbind k
+
+# swap workspaces, but define it in top
+# "win-n"
+definekey top s-1 vselect 0   
+definekey top s-2 vselect 1
+definekey top s-3 vselect 2
+definekey top s-4 vselect 3
+definekey top s-5 vselect 4
+definekey top s-6 vselect 5
+definekey top s-7 vselect 6
+definekey top s-8 vselect 7
+definekey top s-9 vselect 8
+
+# quickly jump to ___
+#definekey root 9 exec sdorfehs -c "vselect 0" -c "fselect 2" -c "select 9"
+
+# map to X1N1 F key
+#definekey top F1 exec sndioctl -q output.mute=!; pkill -USR1 i3status; true
+
+# tab focus between recent windows
+bind Tab focuslast
+bind ISO_Left_Tab focus
+bind grave focus
+
+# act normal but prevent firefox raising itself when links are opened from other
+# apps
+#set rudeness 12
+
+# let popups stay centered
+unmanage xmessage
+unmanage xprompt
+unmanage OpenSSH Authentication Passphrase Request
+unmanage dzen title
+
+#< binds: window management
+bind H prevscreen
+bind J exchangedown
+bind K exchangeup
+bind L nextscreen
+
+bind h focusleft
+bind j focusdown
+bind k focusup
+bind l focusright
+
+bind C-K kill
+#bind w windows
+#bind W windows
+
+bing G gmove
+
+#< init
+
+#>
+
+# startup configuration
+exec xcompmgr -CFn
+exec xwallpaper --clear
+exec ~/.config/sdorfehs/status.sh
