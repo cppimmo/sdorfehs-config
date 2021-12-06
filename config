@@ -32,7 +32,7 @@ bind C exec xterm
 # bind p exec ratpoison -c "echo `mpc next | head -1`"
 # bind o exec mpc toggle
 
-bind D exec dmenu_run
+bind Return exec dmenu_run -p " >>> " -fn "Ubuntu Mono:size=14:antialias=true:autohint=true " -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
 bind F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bind F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 bind F1 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
