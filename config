@@ -32,13 +32,22 @@ bind C exec xterm
 # bind p exec ratpoison -c "echo `mpc next | head -1`"
 # bind o exec mpc toggle
 
-bind Return exec dmenu_run -p " >>> " -fn "Ubuntu Mono:size=14:antialias=true:autohint=true " -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
-bind F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bind F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bind F1 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+alias dmenu_runner exec dmenu_run -p " >>> " -fn "Ubuntu Mono:size=14:antialias=true:autohint=true " -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
+bind Return dmenu_runner
+alias audio_up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+alias audio_down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+alias audio_mute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bind F3 audio_up
+bind F2 audio_down
+bind F1 audio_mute
 #bind XF86AudIomicmute exec
-bind F6 exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -d 0.1
-bind F7 exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -i 0.1
+alias brightness_down exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -d 0.1
+alias brightness_up exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -i 0.1
+bind F6 brightness_down
+bind F7 brightness_up
+alias take_screenshot exec `scrot -e 'mv $f ~/Pictures/Screenshots'`
+bind Print take_screenshot
+# bind $mod+Print exec --no-startup-id "scrot -ue 'mv $f ~/Pictures/Screenshots'"
 
 # lock the screen
 #bind L exec pkill -USR1 xidle
@@ -90,6 +99,7 @@ bind j focusdown
 bind k focusup
 bind l focusright
 
+bind C-k delete
 bind C-K kill
 #bind w windows
 #bind W windows
