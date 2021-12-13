@@ -18,9 +18,9 @@ set fgcolor #FFFFFF
 
 set font "Ubuntu Mono:style=Regular:pixelsize=18:antialias=1:hinting=1:hintstyle=3"
 
-bind s split
-bind C-s split
-bind S hssplit
+bind S split
+bind C-S split
+bind s hsplit
 bind C-s hsplit
 
 # bind c exec urxvt -name sid -fg white -bg black
@@ -105,11 +105,7 @@ bind C-K kill
 #bind W windows
 
 bing G gmove
-
-#< init
-
-#>
-
+msgwait 10
 # startup configuration
 exec xcompmgr -CFn
 exec xwallpaper --clear
