@@ -16,7 +16,7 @@ set bwcolor #000000
 set bgcolor #000000
 set fgcolor #FFFFFF
 
-set font "Ubuntu Mono:style=Regular:pixelsize=18:antialias=1:hinting=1:hintstyle=3"
+set font "Monospace:style=Regular:pixelsize=18:antialias=1:hinting=1:hintstyle=3"
 
 bind S split
 bind C-S split
@@ -24,7 +24,7 @@ bind s hsplit
 bind C-s hsplit
 
 # bind c exec urxvt -name sid -fg white -bg black
-bind c exec st -e tmux 
+bind c exec xterm -e tmux 
 bind C exec xterm
 
 # unbind n
@@ -32,7 +32,7 @@ bind C exec xterm
 # bind p exec ratpoison -c "echo `mpc next | head -1`"
 # bind o exec mpc toggle
 
-alias dmenu_runner exec dmenu_run -p " >>> " -fn "Ubuntu Mono:size=14:antialias=true:autohint=true " -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
+alias dmenu_runner exec dmenu_run -p " >>> " -fn "Monospace:size=14:antialias=true:autohint=true " -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
 bind Return dmenu_runner
 alias audio_up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 alias audio_down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
@@ -41,10 +41,10 @@ bind F3 audio_up
 bind F2 audio_down
 bind F1 audio_mute
 #bind XF86AudIomicmute exec
-alias brightness_down exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -d 0.1
-alias brightness_up exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -i 0.1
-bind F6 brightness_down
-bind F7 brightness_up
+# alias brightness_down exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -d 0.1
+# alias brightness_up exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -i 0.1
+# bind F6 brightness_down
+# bind F7 brightness_up
 alias take_screenshot exec `scrot -e 'mv $f ~/Pictures/Screenshots'`
 bind Print take_screenshot
 # bind $mod+Print exec --no-startup-id "scrot -ue 'mv $f ~/Pictures/Screenshots'"
@@ -108,5 +108,6 @@ bing G gmove
 msgwait 10
 # startup configuration
 exec xcompmgr -CFn
-exec xwallpaper --clear
+exec xsetroot -solid gray
+# exec xwallpaper --clear
 exec ~/.config/sdorfehs/status.sh
