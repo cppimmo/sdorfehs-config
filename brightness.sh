@@ -44,7 +44,9 @@ while [ -n "$1" ]; do
 			if [ $(echo "$brightness>1.0"|bc) -eq 1 ]; then
 				exit 1
 			else
-				set_brightness "$brightness"
+				# set_brightness "$brightness"
+                # xdotool key XF86MonBrightnessUp
+                brightnessctl set +"$brightness"%
 			fi
 			exit
 			;;
@@ -52,9 +54,11 @@ while [ -n "$1" ]; do
 			shift
 			brightness=$(echo "$(get_brightness) - $1" | bc)
 			if [ $(echo "$brightness<0.1"|bc) -eq 1 ]; then
-				exit 1
+		    		exit 1
 			else
-				set_brightness "$brightness"
+			    # set_brightness "$brightness"
+                # xdotool key XF86MonBrightnessDown
+                brightnessctl set "$brightness"%-
 			fi
 			exit
 			;;

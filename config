@@ -24,7 +24,8 @@ bind s hsplit
 bind C-s hsplit
 
 # bind c exec urxvt -name sid -fg white -bg black
-bind c exec st -e tmux 
+# bind c exec st -e tmux 
+bind c exec urxvt
 bind C exec xterm
 
 # unbind n
@@ -32,19 +33,34 @@ bind C exec xterm
 # bind p exec ratpoison -c "echo `mpc next | head -1`"
 # bind o exec mpc toggle
 
+alias poweroff exec sudo shutdown now
+alias reboot exec sudo shutdown -r
+alias suspend exec loginctl suspend
+alias hibernate exec loginctl hibernate
+alias lock_screen exec xlock -mode blank -password "What's the password? " -username "What's my name again? " -timeout 10 -font "Monospace"
+
+bind M-p poweroff
+bind M-r reboot
+bind M-s suspend
+bind M-h hibernate
+bind M-l lock_screen
+
 alias dmenu_runner exec dmenu_run -p " >>> " -fn "Ubuntu Mono:size=14:antialias=true:autohint=true " -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
-bind Return dmenu_runner
+bind Return exec dmenu_runner
 alias audio_up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 alias audio_down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 alias audio_mute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bind F3 audio_up
-bind F2 audio_down
-bind F1 audio_mute
+bind F10 audio_up
+bind F9 audio_down
+bind F11 audio_mute
+bind C-a exec pavucontrol
 #bind XF86AudIomicmute exec
-alias brightness_down exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -d 0.1
-alias brightness_up exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -i 0.1
-bind F6 brightness_down
-bind F7 brightness_up
+#alias brightness_down exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -d 5
+alias brightness_down exec brightnessctl set 5%-
+#alias brightness_up exec ~/.config/sdorfehs/brightness.sh -o LVDS-1 -i 5
+alias brightness_up exec brightnessctl set +5%
+bind F2 brightness_down
+bind F3 brightness_up
 alias take_screenshot exec `scrot -e 'mv $f ~/Pictures/Screenshots'`
 bind Print take_screenshot
 # bind $mod+Print exec --no-startup-id "scrot -ue 'mv $f ~/Pictures/Screenshots'"
@@ -105,8 +121,10 @@ bind C-K kill
 #bind W windows
 
 bing G gmove
-msgwait 10
+set msgwait 7
 # startup configuration
 exec xcompmgr -CFn
 exec xwallpaper --clear
 exec ~/.config/sdorfehs/status.sh
+exec ~/.config/sdorfehs/power.sh
+
