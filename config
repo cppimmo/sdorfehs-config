@@ -34,7 +34,7 @@ bind C exec xterm
 # bind o exec mpc toggle
 
 alias poweroff exec sudo shutdown now
-alias reboot exec sudo shutdown -r
+alias reboot exec sudo shutdown -r now
 alias suspend exec loginctl suspend
 alias hibernate exec loginctl hibernate
 alias lock_screen exec xlock -mode blank -password "What's the password? " -username "What's my name again? " -timeout 10 -font "Monospace"
@@ -61,7 +61,7 @@ alias brightness_down exec brightnessctl set 5%-
 alias brightness_up exec brightnessctl set +5%
 bind F2 brightness_down
 bind F3 brightness_up
-alias take_screenshot exec `scrot -e 'mv $f ~/Pictures/Screenshots'`
+alias take_screenshot exec `scrot -e 'mv $f ~/Pictures/Screenshots' && notify-send "Screenshot Taken"`
 bind Print take_screenshot
 # bind $mod+Print exec --no-startup-id "scrot -ue 'mv $f ~/Pictures/Screenshots'"
 
@@ -125,6 +125,9 @@ set msgwait 7
 # startup configuration
 exec xcompmgr -CFn
 exec xwallpaper --clear
+# exec ~/.config/sdorfehs/wallpaper.sh -o LVDS-1 -f ~/Pictures/Wallpapers/Expose.png
 exec ~/.config/sdorfehs/status.sh
+exec rm /tmp/power.sh.lock
 exec ~/.config/sdorfehs/power.sh
+exec dunst &
 
