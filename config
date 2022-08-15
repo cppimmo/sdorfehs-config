@@ -33,8 +33,8 @@ bind C exec xterm
 # bind p exec ratpoison -c "echo `mpc next | head -1`"
 # bind o exec mpc toggle
 
-alias poweroff exec sudo shutdown now
-alias reboot exec sudo shutdown -r now
+alias poweroff exec sudo /sbin/shutdown now
+alias reboot exec sudo /sbin/shutdown -r now
 alias suspend exec loginctl suspend
 alias hibernate exec loginctl hibernate
 alias lock_screen exec xlock -mode blank -password "What's the password? " -username "What's my name again? " -timeout 10 -font "Monospace"
@@ -125,6 +125,7 @@ set msgwait 7
 # startup configuration
 exec xcompmgr -CFn
 exec xwallpaper --clear
+exec brightnessctl set 15%
 # exec ~/.config/sdorfehs/wallpaper.sh -o LVDS-1 -f ~/Pictures/Wallpapers/Expose.png
 exec ~/.config/sdorfehs/status.sh
 exec rm /tmp/power.sh.lock
