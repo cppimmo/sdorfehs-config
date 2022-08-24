@@ -9,9 +9,9 @@ set onlyborder 1
 set padding 10 10 10 10
 set border 3
 
-# focused window
+# Focused window.
 set fwcolor #FFFFFF
-# unfocused window
+# Unfocused window.
 set bwcolor #000000
 set bgcolor #000000
 set fgcolor #FFFFFF
@@ -32,12 +32,11 @@ bind C exec xterm
 # bind n exec ratpoison -c "echo `mpc prev | head -1`"
 # bind p exec ratpoison -c "echo `mpc next | head -1`"
 # bind o exec mpc toggle
-
-alias poweroff exec sudo /sbin/shutdown now
-alias reboot exec sudo /sbin/shutdown -r now
-alias suspend exec loginctl suspend
-alias hibernate exec loginctl hibernate
 alias lock_screen exec xlock -mode blank -password "What's the password? " -username "What's my name again? " -timeout 10 -font "Monospace"
+alias poweroff exec sudo /sbin/poweroff
+alias reboot exec sudo /sbin/reboot
+alias suspend exec lock_screen && loginctl suspend
+alias hibernate exec lock_screen && loginctl hibernate
 
 bind M-p poweroff
 bind M-r reboot
@@ -45,8 +44,10 @@ bind M-s suspend
 bind M-h hibernate
 bind M-l lock_screen
 
+bind Return exec rofi -modi run -show run
+
 alias dmenu_runner exec dmenu_run -p " >>> " -fn "Ubuntu Mono:size=14:antialias=true:autohint=true " -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
-bind Return exec dmenu_runner
+bind C-Return exec dmenu_runner
 alias audio_up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 alias audio_down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 alias audio_mute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -65,13 +66,13 @@ alias take_screenshot exec `scrot -e 'mv $f ~/Pictures/Screenshots' && notify-se
 bind Print take_screenshot
 # bind $mod+Print exec --no-startup-id "scrot -ue 'mv $f ~/Pictures/Screenshots'"
 
-# lock the screen
+# Lock the screen.
 #bind L exec pkill -USR1 xidle
 
-# prevent accidental closes
+# Prevent accidental closes by unbinding lowercase k.
 unbind k
 
-# swap workspaces, but define it in top
+# Swap workspaces, but define it in top.
 # "win-n"
 definekey top s-1 vselect 0   
 definekey top s-2 vselect 1
