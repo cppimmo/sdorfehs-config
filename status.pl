@@ -63,8 +63,6 @@ sub DoLoop {
 		# truncate($barFile, tell($barFile));
 		sleep(1);
 	}
-	# close($barFile);
-	close($batteryFile);
 }
 
 Init();
