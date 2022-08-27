@@ -127,7 +127,7 @@ exec xwallpaper --clear
 exec brightnessctl set 15%
 # exec ~/.config/sdorfehs/wallpaper.sh -o LVDS-1 -f ~/Pictures/Wallpapers/Expose.png
 # exec trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --alpha 0 --tint 0x292d3e --height 29
-exec ~/.config/sdorfehs/status.sh
+exec ~/.config/sdorfehs/status.pl
 exec rm /tmp/power.sh.lock
 exec ~/.config/sdorfehs/power.sh
 exec dunst &

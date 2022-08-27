@@ -1,2 +1,4 @@
-# history file does not need to be staged
+# History file does not need to be staged.
 history
+# Ignore Emacs backup files.
+*~
