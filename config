@@ -1,4 +1,4 @@
-# config
+# Config.
 escape C-t
 
 set barpadding 10 5
@@ -87,25 +87,22 @@ definekey top s-9 vselect 8
 # quickly jump to ___
 #definekey root 9 exec sdorfehs -c "vselect 0" -c "fselect 2" -c "select 9"
 
-# map to X1N1 F key
-#definekey top F1 exec sndioctl -q output.mute=!; pkill -USR1 i3status; true
-
-# tab focus between recent windows
+# Tab focus between recent windows.
 bind Tab focuslast
 bind ISO_Left_Tab focus
 bind grave focus
 
-# act normal but prevent firefox raising itself when links are opened from other
-# apps
+# Act normal but prevent firefox raising itself when links are opened from other
+# apps.
 #set rudeness 12
 
-# let popups stay centered
+# Make sure popups stay centered.
 unmanage xmessage
 unmanage xprompt
 unmanage OpenSSH Authentication Passphrase Request
 unmanage dzen title
 
-#< binds: window management
+# Window management bindings.
 bind H prevscreen
 bind J exchangedown
 bind K exchangeup
@@ -123,11 +120,13 @@ bind C-K kill
 
 bing G gmove
 set msgwait 7
-# startup configuration
+
+# Startup Configuration
 exec xcompmgr -CFn
 exec xwallpaper --clear
 exec brightnessctl set 15%
 # exec ~/.config/sdorfehs/wallpaper.sh -o LVDS-1 -f ~/Pictures/Wallpapers/Expose.png
+# exec trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 10 --transparent true --alpha 0 --tint 0x292d3e --height 29
 exec ~/.config/sdorfehs/status.sh
 exec rm /tmp/power.sh.lock
 exec ~/.config/sdorfehs/power.sh
