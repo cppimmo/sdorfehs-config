@@ -35,8 +35,8 @@ bind C exec urxvt
 alias lock_screen exec xlock -mode blank -password "What's the password? " -username "What's my name again? " -timeout 10 -font "Monospace"
 alias poweroff exec sudo /sbin/poweroff
 alias reboot exec sudo /sbin/reboot
-alias suspend exec lock_screen && loginctl suspend
-alias hibernate exec lock_screen && loginctl hibernate
+alias suspend exec lock_screen ; loginctl suspend
+alias hibernate exec lock_screen ; loginctl hibernate
 
 bind M-p poweroff
 bind M-r reboot
