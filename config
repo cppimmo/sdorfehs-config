@@ -26,7 +26,7 @@ bind C-s hsplit
 # bind c exec urxvt -name sid -fg white -bg black
 # bind c exec st -e tmux 
 bind c exec urxvt
-bind C exec xterm
+bind C exec urxvt
 
 # unbind n
 # bind n exec ratpoison -c "echo `mpc prev | head -1`"
@@ -35,8 +35,8 @@ bind C exec xterm
 alias lock_screen exec xlock -mode blank -password "What's the password? " -username "What's my name again? " -timeout 10 -font "Monospace"
 alias poweroff exec sudo /sbin/poweroff
 alias reboot exec sudo /sbin/reboot
-alias suspend exec lock_screen && exec loginctl suspend
-alias hibernate exec lock_screen && exec loginctl hibernate
+alias suspend exec lock_screen && loginctl suspend
+alias hibernate exec lock_screen && loginctl hibernate
 
 bind M-p poweroff
 bind M-r reboot
