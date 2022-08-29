@@ -2,3 +2,23 @@ SDORFEHS CONFIG
 ===============
 cppimmo
 BSD 2-Clause License
+
+DEPENDENCIES
+------------
+(Programs used by the config that aren't included in Slackware by default.)
+
+- playerctl
+- scrot
+- rofi
+- dmenu
+- Ubuntu Fonts (Ubuntu Mono in particular.)
+- trayer (trayer-srg fork in particular.)
+- xwallpaper
+- brightnessctl
+- dunst
+
+USAGE
+-----
+
+
+
