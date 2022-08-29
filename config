@@ -143,4 +143,6 @@ exec ~/.config/sdorfehs/status.pl
 exec rm /tmp/power.sh.lock
 exec ~/.config/sdorfehs/power.sh
 exec dunst
+# Applets.
+exec nm-applet
 
