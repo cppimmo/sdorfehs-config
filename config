@@ -33,10 +33,11 @@ bind C exec urxvt
 # bind p exec ratpoison -c "echo `mpc next | head -1`"
 # bind o exec mpc toggle
 alias lock_screen exec xlock -mode blank -password "What's the password? " -username "What's my name again? " -timeout 10 -font "Monospace"
+# These must commands must be in the sudoers file(s).
 alias poweroff exec sudo /sbin/poweroff
 alias reboot exec sudo /sbin/reboot
-alias suspend exec lock_screen ; loginctl suspend
-alias hibernate exec lock_screen ; loginctl hibernate
+alias suspend exec lock_screen ; sudo /usr/bin/loginctl suspend
+alias hibernate exec lock_screen ; sudo /usr/bin/loginctl hibernate
 
 bind M-p poweroff
 bind M-r reboot
@@ -121,8 +122,19 @@ bind C-K kill
 bing G gmove
 set msgwait 7
 
+alias xcompmgr_run exec xcompmgr -CcfF -I-.05 -O-.05 -D2 -t-1 -l-3 -r2.5 -o.5 &
+alias trayer_run exec trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 4 --transparent true --tint 0x000000 --height 29
+alias xcompmgr_kill exec killall xcompmgr
+alias trayer_kill exec killall trayer
+
+bind C-o exec xcompmgr_run
+bind M-o exec xcompmgr_kill
+bind C-i exec trayer_run
+bind M-i exec trayer_kill
+
 # Startup Configuration
-exec xcompmgr -CFn
+exec xcompmgr -CcfF -I-.05 -O-.05 -D2 -t-1 -l-3 -r2.5 -o.5
+exec trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 4 --transparent true --tint 0x000000 --height 29
 exec xwallpaper --clear
 exec brightnessctl set 15%
 # exec ~/.config/sdorfehs/wallpaper.sh -o LVDS-1 -f ~/Pictures/Wallpapers/Expose.png
@@ -130,5 +142,5 @@ exec brightnessctl set 15%
 exec ~/.config/sdorfehs/status.pl
 exec rm /tmp/power.sh.lock
 exec ~/.config/sdorfehs/power.sh
-exec dunst &
+exec dunst
 

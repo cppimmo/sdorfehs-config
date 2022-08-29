@@ -8,6 +8,8 @@ use Readonly;
 # https://unix.stackexchange.com/questions/352031/how-to-find-status-of-wlan0
 # Constants.
 Readonly my $HOME => $ENV{HOME};
+# For some reason this amount of spaces doesn't render.
+Readonly my $PADDING_RIGHT => 20;
 Readonly my $SEPARATOR => ' | ';
 Readonly my $UPTIME_SINCE_STRING => `uptime -s`;
 Readonly my $UPTIME_STRING => `date -d "$UPTIME_SINCE_STRING" '+UP:%d-%b-%Y %T' | tr a-z A-Z`;
@@ -54,7 +56,10 @@ sub DoLoop {
 		$statusString = $statusString . $UPTIME_STRING;
 		
 		# Remove newlines from string. Sdorfehs bar considers newlines as EOF.
-		$statusString =~ s/[\n]//g; 
+		$statusString =~ s/[\n]//g;
+		for (my $i = 0; $i < $PADDING_RIGHT; ++$i) {
+			$statusString = $statusString . ' ';
+		}
 
 		# seek($barFile, 0, 0);
 		# print $barFile $statusString;
