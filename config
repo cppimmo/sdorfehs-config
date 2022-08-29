@@ -49,6 +49,16 @@ bind Return exec rofi -modi run -show run
 
 alias dmenu_runner exec dmenu_run -p " >>> " -fn "Ubuntu Mono:size=14:antialias=true:autohint=true " -nb '#000000' -nf '#ffffff' -sb '#ffffff' -sf '#000000'
 bind C-Return exec dmenu_runner
+
+# Need playerctl.
+alias media_toggle exec playerctl -a play-pause
+alias media_previous exec playerctl -a previous
+alias media_next exec playerctl -a next
+
+bind F6 media_previous
+bind F7 media_toggle
+bind F8 media_next
+
 alias audio_up exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 alias audio_down exec pactl set-sink-volume @DEFAULT_SINK@ -5%
 alias audio_mute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
