@@ -16,6 +16,7 @@ DEPENDENCIES
 - xwallpaper
 - brightnessctl
 - dunst
+- pasystray
 
 USAGE
 -----

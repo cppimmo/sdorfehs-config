@@ -155,4 +155,5 @@ exec ~/.config/sdorfehs/power.sh
 exec dunst
 # Applets.
 exec nm-applet
+exec pasystray
 
